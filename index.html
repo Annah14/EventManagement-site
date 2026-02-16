@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Annah Events | Premium Event Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Annah <span>Events</span></div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#pricing">Packages</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-buttons">
+    <button onclick="openLogin()">Login</button>
+    <button onclick="openSignup()">Sign up</button>
+  </div>
+</nav>
+
+<!-- HERO SECTION WITH IMAGE BACKGROUND -->
+<section id="home" class="hero">
+  <div class="hero-overlay">
+    <h1>Elegant & Luxury Event Planning</h1>
+    <p>We design unforgettable moments with style and perfection</p>
+    <a href="#contact" class="btn-primary">Book Your Event</a>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="about">
+  <h2>About Annah Events</h2>
+  <p>Annah Events is a luxury event management company specializing in weddings, corporate functions, concerts, and private celebrations. We combine creativity, technology, and professionalism to deliver world-class experiences.</p>
+
+  <div class="stats">
+    <div class="stat-box"><h3>250+</h3><p>Events Managed</p></div>
+    <div class="stat-box"><h3>120+</h3><p>Happy Clients</p></div>
+    <div class="stat-box"><h3>15+</h3><p>Professional Staff</p></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <h2>Our Services</h2>
+  <div class="service-grid">
+    <div class="service-card"><i class="fa-solid fa-ring"></i><h3>Wedding Planning</h3><p>Luxury weddings with décor, catering, photography, and coordination.</p></div>
+    <div class="service-card"><i class="fa-solid fa-building"></i><h3>Corporate Events</h3><p>Professional conferences, seminars, and product launches.</p></div>
+    <div class="service-card"><i class="fa-solid fa-cake-candles"></i><h3>Private Parties</h3><p>Birthdays, anniversaries, baby showers, and themed parties.</p></div>
+    <div class="service-card"><i class="fa-solid fa-microphone"></i><h3>Concerts & Shows</h3><p>Stage setup, sound, lighting, and crowd management.</p></div>
+  </div>
+</section>
+
+<!-- GALLERY (4 RELIABLE IMAGES) -->
+<section id="gallery" class="gallery">
+  <h2>Event Gallery</h2>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80">
+    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80">
+    <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&w=1200&q=80">
+    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=80">
+  </div>
+</section>
+
+<!-- PRICING PACKAGES -->
+<section id="pricing" class="pricing">
+  <h2>Event Packages</h2>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Basic Package</h3>
+      <h4>$500</h4>
+      <p>Planning + Venue Coordination</p>
+      <button class="btn-primary">Choose</button>
+    </div>
+    <div class="price-card highlight">
+      <h3>Premium Package</h3>
+      <h4>$1500</h4>
+      <p>Full Planning + Décor + Catering</p>
+      <button class="btn-primary">Choose</button>
+    </div>
+    <div class="price-card">
+      <h3>Luxury Package</h3>
+      <h4>$3000</h4>
+      <p>VIP Planning + Entertainment + Photography</p>
+      <button class="btn-primary">Choose</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Book an Event</h2>
+  <form class="contact-form">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="text" placeholder="Event Type">
+    <textarea rows="5" placeholder="Describe your event"></textarea>
+    <button class="btn-primary">Submit Request</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Annah Events Management | Designed by Annah Tinotenda</p>
+  <p>Email: annahtinotenda4@gmail.com | Phone: +260771354950</p>
+</footer>
+
+<!-- LOGIN POPUP -->
+<div id="loginBox" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closeLogin()">&times;</span>
+    <h2>Login</h2>
+    <input type="text" placeholder="Email or Username">
+    <input type="password" placeholder="Password">
+    <button class="btn-primary">Login</button>
+  </div>
+</div>
+
+<!-- SIGN IN POPUP -->
+<div id="signinBox" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closeSignup()">&times;</span>
+    <h2>Sign up</h2>
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <input type="confirm password" placeholder="Confirm Password">
+    <button class="btn-primary">Create Account</button>
+  </div>
+</div>
+
+<script>
+function openLogin(){document.getElementById('loginBox').style.display='flex';}
+function closeLogin(){document.getElementById('loginBox').style.display='none';}
+function openSignup(){document.getElementById('signinBox').style.display='flex';}
+function closeSignup(){document.getElementById('signinBox').style.display='none';}
+</script>
+
+</body>
+</html>
+
+
+
+
