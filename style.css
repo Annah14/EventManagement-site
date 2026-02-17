@@ -1,62 +1,507 @@
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#f7f7f7;color:#333;}
+/* ========== RESET & BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-/* NAVBAR */
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 60px;background:#0c0c0c;color:white;position:sticky;top:0;z-index:999;}
-.logo{font-size:26px;font-weight:700;font-family:'Playfair Display',serif;}
-.logo span{color:#d4af37;}
-.nav-links{list-style:none;display:flex;gap:25px;}
-.nav-links a{text-decoration:none;color:white;font-weight:500;transition:0.3s;}
-.nav-links a:hover{color:#d4af37;}
-.nav-buttons button{padding:8px 16px;border:none;background:#d4af37;color:black;border-radius:20px;margin-left:10px;font-weight:600;cursor:pointer;}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fefcf7;
+  color: #222;
+}
 
-/* HERO IMAGE BACKGROUND */
-.hero{height:95vh;background:url('https://images.unsplash.com/photo-1515169067865-5387ec356754?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;position:relative;}
-.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.65);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:white;padding:20px;}
-.hero-overlay h1{font-size:55px;font-family:'Playfair Display',serif;margin-bottom:10px;}
-.hero-overlay p{font-size:20px;margin-bottom:20px;}
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
 
-.btn-primary{background:#d4af37;color:black;padding:12px 30px;border:none;border-radius:30px;font-weight:600;text-decoration:none;cursor:pointer;}
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #2e1b0e;
+}
 
-/* ABOUT */
-.about{text-align:center;padding:70px 20px;background:white;}
-.about h2{font-size:36px;font-family:'Playfair Display',serif;margin-bottom:15px;}
-.stats{display:flex;justify-content:center;gap:30px;margin-top:30px;flex-wrap:wrap;}
-.stat-box{background:#111;color:white;padding:25px;border-radius:12px;width:200px;}
-.stat-box h3{font-size:30px;color:#d4af37;}
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
 
-/* SERVICES */
-.services{text-align:center;padding:70px 20px;background:#f0f0f0;}
-.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:20px;}
-.service-card{background:white;padding:30px;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,0.1);transition:0.3s;}
-.service-card i{font-size:35px;color:#d4af37;margin-bottom:10px;}
-.service-card:hover{transform:translateY(-10px);}
+/* ========== NAVBAR ========== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-/* GALLERY */
-.gallery{text-align:center;padding:70px 20px;background:white;}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;}
-.gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:10px;transition:0.3s;}
-.gallery-grid img:hover{transform:scale(1.05);}
+.logo {
+  font-size: 1.9rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: #b75a3b;
+}
 
-/* PRICING */
-.pricing{text-align:center;padding:70px 20px;background:#111;color:white;}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:20px;}
-.price-card{background:#222;padding:30px;border-radius:12px;}
-.price-card h4{font-size:28px;color:#d4af37;}
-.highlight{background:#d4af37;color:black;}
-.highlight h4{color:black;}
+.logo span {
+  font-weight: 300;
+  color: #2e1b0e;
+}
 
-/* CONTACT */
-.contact{text-align:center;padding:70px 20px;background:white;}
-.contact-form{max-width:500px;margin:auto;display:flex;flex-direction:column;gap:10px;}
-.contact-form input,.contact-form textarea{padding:12px;border-radius:8px;border:1px solid #ccc;}
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
 
-/* FOOTER */
-footer{text-align:center;background:#111;color:white;padding:20px;}
+.nav-links a {
+  text-decoration: none;
+  color: #2e1b0e;
+  font-weight: 500;
+  transition: 0.2s;
+}
 
-/* POPUP FORMS */
-.popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:2000;}
-.popup-content{background:white;padding:30px;width:320px;border-radius:12px;text-align:center;}
-.popup-content input{width:100%;padding:10px;margin:10px 0;}
-.close{float:right;font-size:22px;cursor:pointer;}
+.nav-links a:hover {
+  color: #b75a3b;
+}
 
+.nav-buttons {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.nav-buttons button {
+  background: transparent;
+  border: 1.5px solid #b75a3b;
+  color: #b75a3b;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.95rem;
+}
+
+.nav-buttons button:hover {
+  background: #b75a3b;
+  color: white;
+}
+
+/* Dashboard button - EXACT original colors */
+.dashboard-btn {
+  background: #2e1b0e !important;
+  border: 1.5px solid #2e1b0e !important;
+  color: white !important;
+}
+
+.dashboard-btn:hover {
+  background: #b75a3b !important;
+  border-color: #b75a3b !important;
+}
+
+/* ========== HERO ========== */
+.hero {
+  background: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero-overlay {
+  background: rgba(0,0,0,0.45);
+  padding: 3rem 4rem;
+  border-radius: 12px;
+  backdrop-filter: blur(2px);
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.btn-primary {
+  background: #b75a3b;
+  border: none;
+  color: white;
+  padding: 0.9rem 2.5rem;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #92442b;
+}
+
+/* ========== ABOUT ========== */
+.about p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  text-align: center;
+  color: #3e2f21;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 3rem 0;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-box h3 {
+  font-size: 3rem;
+  color: #b75a3b;
+  font-weight: 700;
+}
+
+/* ========== SERVICES ========== */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card {
+  background: white;
+  padding: 2.5rem 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: 0.25s;
+  border: 1px solid #f0e4d5;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(183,90,59,0.1);
+}
+
+.service-card i {
+  font-size: 2.8rem;
+  color: #b75a3b;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  margin-bottom: 0.8rem;
+}
+
+/* ========== GALLERY ========== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  border: 2px solid white;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.02);
+}
+
+/* ========== PRICING ========== */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.price-card {
+  background: white;
+  border-radius: 30px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border: 1px solid #edd7cc;
+  transition: 0.3s;
+}
+
+.price-card.highlight {
+  background: #fef2ea;
+  border: 2px solid #b75a3b;
+  transform: scale(1.02);
+}
+
+.price-card h4 {
+  font-size: 2.5rem;
+  color: #b75a3b;
+  margin: 0.5rem 0 1rem;
+}
+
+.price-card p {
+  margin-bottom: 2rem;
+  color: #4a3727;
+}
+
+/* ========== CONTACT ========== */
+.contact-form {
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem 1.2rem;
+  border: 1px solid #dccfc4;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  align-self: center;
+  padding: 1rem 3rem;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: #2e1b0e;
+  color: #f0dac8;
+  text-align: center;
+  padding: 2.5rem;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
+
+/* ========== POPUP MODAL ========== */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.popup-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 30px;
+  width: 90%;
+  max-width: 380px;
+  position: relative;
+  text-align: center;
+}
+
+.popup-content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.popup-content input {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.8rem 0;
+  border: 1px solid #d1c0b2;
+  border-radius: 40px;
+  font-size: 1rem;
+}
+
+.popup-content button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #777;
+}
+
+/* ========== DASHBOARD MODAL (ADDED) ========== */
+.dashboard-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(3px);
+  z-index: 250;
+  display: none;
+}
+
+.dashboard-overlay.active {
+  display: block;
+}
+
+.dashboard-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  max-width: 650px;
+  width: 90%;
+  border-radius: 40px;
+  padding: 2.5rem;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  z-index: 300;
+  display: none;
+  border: 3px solid #b75a3b;
+}
+
+.dashboard-modal.active {
+  display: block;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  color: #2e1b0e;
+  font-size: 2rem;
+}
+
+.dashboard-header h2 i {
+  color: #b75a3b;
+  margin-right: 8px;
+}
+
+.close-dash {
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #b75a3b;
+  line-height: 1;
+}
+
+.dashboard-modal p {
+  color: #4a3727;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.dashboard-card {
+  background: #faf3ed;
+  padding: 1.5rem;
+  border-radius: 24px;
+  border-left: 6px solid #b75a3b;
+}
+
+.dashboard-card i {
+  font-size: 2rem;
+  color: #b75a3b;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.dashboard-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  color: #2e1b0e;
+}
+
+.dashboard-card p {
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #4a3727;
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.dashboard-actions .btn-primary {
+  padding: 0.7rem 1.8rem;
+}
+
+.btn-dark {
+  background: #2e1b0e !important;
+}
+
+.btn-dark:hover {
+  background: #b75a3b !important;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 800px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero-overlay {
+    padding: 2rem;
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

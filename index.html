@@ -27,6 +27,8 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-buttons">
+    <!-- ONLY THIS LINE ADDED - DASHBOARD BUTTON -->
+    <button class="dashboard-btn" onclick="openDashboard()"><i class="fa-regular fa-chart-bar"></i> Dashboard</button>
     <button onclick="openLogin()">Login</button>
     <button onclick="openSignup()">Sign up</button>
   </div>
@@ -142,16 +144,48 @@
   </div>
 </div>
 
+<!-- DASHBOARD MODAL (ADDED) -->
+<div class="dashboard-overlay" id="dashOverlay" onclick="closeDashboard()"></div>
+<div class="dashboard-modal" id="dashboardModal">
+  <div class="dashboard-header">
+    <h2><i class="fa-regular fa-circle-user"></i> Organiser Dashboard</h2>
+    <span class="close-dash" onclick="closeDashboard()">&times;</span>
+  </div>
+  <p>Welcome back, <strong>Annah</strong>! Here's your event snapshot.</p>
+  <div class="dashboard-grid">
+    <div class="dashboard-card"><i class="fa-regular fa-calendar-check"></i><h3>Upcoming</h3><p>8 events this month</p></div>
+    <div class="dashboard-card"><i class="fa-regular fa-star"></i><h3>Tasks</h3><p>12 to-dos · 3 urgent</p></div>
+    <div class="dashboard-card"><i class="fa-regular fa-chart-line"></i><h3>Revenue</h3><p>$24.8k (YTD)</p></div>
+    <div class="dashboard-card"><i class="fa-regular fa-message"></i><h3>Messages</h3><p>5 unread</p></div>
+  </div>
+  <div class="dashboard-actions">
+    <button class="btn-primary" onclick="alert('Manage events (demo)')">Manage events</button>
+    <button class="btn-primary btn-dark" onclick="closeDashboard()">Close</button>
+  </div>
+</div>
+
 <script>
 function openLogin(){document.getElementById('loginBox').style.display='flex';}
 function closeLogin(){document.getElementById('loginBox').style.display='none';}
 function openSignup(){document.getElementById('signinBox').style.display='flex';}
 function closeSignup(){document.getElementById('signinBox').style.display='none';}
+
+// DASHBOARD FUNCTIONS (ADDED)
+function openDashboard() {
+  document.getElementById('dashboardModal').classList.add('active');
+  document.getElementById('dashOverlay').classList.add('active');
+}
+function closeDashboard() {
+  document.getElementById('dashboardModal').classList.remove('active');
+  document.getElementById('dashOverlay').classList.remove('active');
+}
+
+// Close popups when clicking outside (ADDED - but doesn't affect existing functionality)
+window.addEventListener('click', (e) => {
+  if(e.target === document.getElementById('loginBox')) closeLogin();
+  if(e.target === document.getElementById('signinBox')) closeSignup();
+});
 </script>
 
 </body>
 </html>
-
-
-
-
