@@ -1,50 +1,38 @@
 <?php
-require_once __DIR__ . '/db.php';
-if (currentUser()) {
-    if (isAdmin()) {
-        header('Location: admin.php');
-    } else {
-        header('Location: dashboard.php');
-    }
-    exit;
-}
-$message = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = strtolower(trim($_POST['email'] ?? ''));
-    $password = $_POST['password'] ?? '';
+require_once __DIR__ . '/db_api.php';
 
-    if (!$email || !$password) {
-        $message = 'Please enter your email and password.';
-    } else {
-        $stmt = $pdo->prepare('SELECT id, fullname, email, password, role FROM users WHERE email = ?');
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-        if ($user && password_verify($password, $user['password'])) {
-            unset($user['password']);
-            $_SESSION['user'] = $user;
-            if ($user['role'] === 'admin') {
-                header('Location: admin.php');
-            } else {
-                header('Location: dashboard.php');
-            }
-            exit;
-        }
-        $message = 'Invalid login details.';
-    }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    jsonResponse('error', 'Only POST method is allowed', null, 405);
 }
+
+// Read JSON input or POST form data
+$input = json_decode(file_get_contents('php://input'), true) ?? $_POST;
+
+$email = strtolower(trim($input['email'] ?? ''));
+$password = $input['password'] ?? '';
+
+if (!$email || !$password) {
+    jsonResponse('error', 'Please enter your email and password.', null, 400);
+}
+
+$stmt = $pdo->prepare('SELECT id, fullname, email, password, role FROM users WHERE email = ?');
+$stmt->execute([$email]);
+$user = $stmt->fetch();
+
+if ($user && password_verify($password, $user['password'])) {
+    // Generate a new API token
+    $api_token = bin2hex(random_bytes(32));
+    
+    // Update the token in the database
+    $updateStmt = $pdo->prepare('UPDATE users SET api_token = ? WHERE id = ?');
+    $updateStmt->execute([$api_token, $user['id']]);
+    
+    // Prepare user data to return
+    unset($user['password']);
+    $user['api_token'] = $api_token;
+    
+    jsonResponse('success', 'Login successful.', ['user' => $user]);
+}
+
+jsonResponse('error', 'Invalid login details.', null, 401);
 ?>
-<?php include 'header.php'; ?>
-<section class="page-section auth-section">
-    <h2>Login to your account</h2>
-    <?php if (isset($_GET['registered'])): ?><p class="message success">Your account was created. Please login.</p><?php endif; ?>
-    <?php if ($message): ?><p class="message error"><?= htmlspecialchars($message) ?></p><?php endif; ?>
-    <form method="post" class="auth-form">
-        <label>Email Address</label>
-        <input type="email" name="email" placeholder="Email" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password" required>
-        <button class="btn-primary" type="submit">Login</button>
-        <p class="small-text">Don't have an account? <a href="register.php">Sign up</a>.</p>
-    </form>
-</section>
-<?php include 'footer.php'; ?>
